@@ -4,14 +4,17 @@
 
 <web-app>
 	<display-name>Archetype Created Web Application</display-name>
-	<!-- <listener>
+	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>classpath:spring-core.xml</param-value>
-	</context-param>  -->
+		<param-value>
+			classpath:spring-core.xml,
+			classpath:spring-task.xml
+		</param-value>
+	</context-param>
 	
 	<filter>
 		<filter-name>springUtf8Encoding</filter-name>
