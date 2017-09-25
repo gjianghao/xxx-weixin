@@ -21,8 +21,10 @@ public class InitAccessToken implements InitializingBean{
 
 	public void afterPropertiesSet() throws Exception {
 		
-		String appId = PropertiesUtil.getValue("AppID");
-		String appSecrty = PropertiesUtil.getValue("AppSecret");
+		/*String appId = PropertiesUtil.getValue("AppID");
+		String appSecrty = PropertiesUtil.getValue("AppSecret");*/
+		String appId = PropertiesUtil.getValue("appID");
+		String appSecrty = PropertiesUtil.getValue("appsecret");
 		
 		String access_token_url = PropertiesUtil.getValue("access_token_url");
 		String url = access_token_url.replaceAll("APPID", appId).replaceAll("APPSECRET", appSecrty);

@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -19,6 +20,7 @@ import com.guojianghao.util.Constant;
 import com.guojianghao.util.HttpUtil;
 import com.guojianghao.util.PropertiesUtil;
 
+@Controller
 @RequestMapping("/wechatmenu")
 public class MenuManageController {
 	
@@ -96,8 +98,7 @@ public class MenuManageController {
 		String query_menu_url = PropertiesUtil.getValue("query_menu_url");
 		String url = query_menu_url.replaceAll("ACCESS_TOKEN", Cache.getToken("token").getAccess_token());
 		String result = HttpUtil.getInvoke(url);
-		MessageInfo message = JSON.parseObject(result, MessageInfo.class);
-		return message;
+		return result;
 	}
 	
 	/**
