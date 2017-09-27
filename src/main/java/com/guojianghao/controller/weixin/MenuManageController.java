@@ -27,7 +27,7 @@ public class MenuManageController {
 	private static final Logger logger = LoggerFactory.getLogger(MenuManageController.class);
 
 	/**
-	 * ´´½¨×Ô¶¨Òå²Ëµ¥,ÏÈ×ö²âÊÔÓÃ,ºóÃæ½ÓÊÜadmin´«À´µÄ²ÎÊı
+	 * åˆ›å»ºè‡ªå®šä¹‰èœå•,å…ˆåšæµ‹è¯•ç”¨,åé¢æ¥å—adminä¼ æ¥çš„å‚æ•°
 	 */
 	@RequestMapping(value = "/createMenu",method = RequestMethod.POST)
 	@ResponseBody
@@ -38,25 +38,25 @@ public class MenuManageController {
 		List<WechatMenu> list = new ArrayList<WechatMenu>();
 		
 		WechatMenu menu = new WechatMenu();
-		menu.setName("²Ëµ¥Ò»");
+		menu.setName("èœå•ä¸€");
 		menu.setKey("V1001_MENU1");
 		menu.setType(Constant.Wechat.CLICK_TYPE.get("click"));
 		
 		WechatMenu menu2 = new WechatMenu();
-		menu2.setName("²Ëµ¥¶ş");
+		menu2.setName("èœå•äºŒ");
 		menu2.setUrl("http://www.baidu.com");
 		menu2.setType(Constant.Wechat.CLICK_TYPE.get("view"));
 		
 		WechatMenu menu3 = new WechatMenu();
-		menu3.setName("²Ëµ¥Èı");
+		menu3.setName("èœå•ä¸‰");
 		
 		WechatMenu menu31 = new WechatMenu();
-		menu31.setName("×Ó²Ëµ¥Ò»");
+		menu31.setName("å­èœå•ä¸€");
 		menu31.setKey("V1001_MENU1");
 		menu31.setType(Constant.Wechat.CLICK_TYPE.get("click"));
 		
 		WechatMenu menu32 = new WechatMenu();
-		menu32.setName("×Ó²Ëµ¥¶ş");
+		menu32.setName("å­èœå•äºŒ");
 		menu32.setUrl("http://www.baidu.com");
 		menu32.setType(Constant.Wechat.CLICK_TYPE.get("view"));
 		
@@ -73,7 +73,7 @@ public class MenuManageController {
 		String url = create_menu_url.replaceAll("ACCESS_TOKEN", Cache.getToken("token").getAccess_token());
 		String result = "";
 		try {
-			logger.info("²Ëµ¥²ÎÊıÎª£ºparams = {}",json);
+			logger.info("èœå•å‚æ•°ä¸ºï¼šparams = {}",json);
 			result = HttpUtil.postInvoke(url,json);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -83,12 +83,12 @@ public class MenuManageController {
 		if(message.getErrcode() != 0){
 			status = "fail";
 		}
-		logger.info("´´½¨²Ëµ¥·µ»ØÏûÏ¢Îª£ºmessageInfo={}",message);
+		logger.info("åˆ›å»ºèœå•è¿”å›æ¶ˆæ¯ä¸ºï¼šmessageInfo={}",message);
 		return status;
 	}
 	
 	/**
-	 * ²Ëµ¥²éÑ¯
+	 * èœå•æŸ¥è¯¢
 	 * @return
 	 */
 	@RequestMapping(value = "/queryMenuList", method = RequestMethod.GET)
@@ -102,7 +102,7 @@ public class MenuManageController {
 	}
 	
 	/**
-	 * É¾³ıËùÓĞ²Ëµ¥£¬É÷ÓÃ
+	 * åˆ é™¤æ‰€æœ‰èœå•ï¼Œæ…ç”¨
 	 * @return
 	 */
 	@RequestMapping(value = "/deleteMenu", method = RequestMethod.GET)

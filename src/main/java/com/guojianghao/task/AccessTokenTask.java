@@ -12,9 +12,10 @@ import com.guojianghao.util.HttpUtil;
 import com.guojianghao.util.PropertiesUtil;
 
 /**
- * @Description:<p>»ñÈ¡token²¢»º´æ</p>
+ * 
+ * @Description:<p>å®šæ—¶åˆ·æ–°access_token</p>
  * @author king
- * @date 2017Äê9ÔÂ25ÈÕ ÏÂÎç3:18:52
+ * @date 2017å¹´9æœˆ27æ—¥ ä¸‹åˆ7:43:41
  */
 @Component
 public class AccessTokenTask {
@@ -34,9 +35,9 @@ public class AccessTokenTask {
 			String result = HttpUtil.getInvoke(url);
 			Token token = JSON.parseObject(result, Token.class);
 			Cache.putToken("token", token);
-			logger.info("»ñÈ¡access_token ³É¹¦,access_token = {}",result);
+			logger.info("è·å–access_token æˆåŠŸ,access_token = {}",result);
 		} catch (Exception e) {
-			logger.info("»ñÈ¡access_token Ê§°Ü,exception = {}",e);
+			logger.info("è·å–access_token å¤±è´¥,exception = {}",e);
 		}
 	}
 }

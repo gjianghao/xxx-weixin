@@ -1,14 +1,15 @@
 package com.guojianghao.controller.weixin;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.io.InputStream;
+import java.util.Iterator;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.dom4j.Document;
+import org.dom4j.Element;
+import org.dom4j.io.SAXReader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -19,18 +20,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
 import com.guojianghao.cache.Cache;
-import com.guojianghao.entity.weixin.MessageInfo;
 import com.guojianghao.entity.weixin.Token;
-import com.guojianghao.entity.weixin.WechatMenu;
-import com.guojianghao.util.Constant;
 import com.guojianghao.util.HttpUtil;
 import com.guojianghao.util.PropertiesUtil;
 import com.guojianghao.util.SignUtil;
 
 /**
- * @Description:<p>Î¢ĞÅ½ÓÈë</p>
+ * @Description:<p>å¾®ä¿¡æ¥å…¥</p>
  * @author king
- * @date 2017Äê9ÔÂ25ÈÕ ÉÏÎç11:08:04
+ * @date 2017å¹´9æœˆ25æ—¥ ä¸Šåˆ11:08:04
  */
 @Controller
 @RequestMapping("/wechat")
@@ -39,7 +37,7 @@ public class WechatController {
 	private static final Logger logger = LoggerFactory.getLogger(WechatController.class);
 	
 	/**
-	 * ½ÓÈë
+	 * æ¥å…¥
 	 */
 	@RequestMapping(value = "/access", method = RequestMethod.GET)
 	public void wechatGet(HttpServletRequest request,
@@ -61,8 +59,25 @@ public class WechatController {
 		}
 	}
 	
+	@RequestMapping(value = "/access", method = RequestMethod.POST)
+	public void wechatPost(HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		
+		InputStream is = request.getInputStream();
+		SAXReader reader = new SAXReader();
+		Document doc = reader.read(is);
+		Element element = doc.getRootElement();
+		
+		Iterator<Element> it = element.elementIterator();
+		while(it.hasNext()){
+			Element e = it.next();
+			System.out.println(e.getName()+"--------------"+e.getText());
+		}
+		
+	}
+	
 	/**
-	 * »ñÈ¡access_token²¢»º´æ,Ôö¼Ó¶¨Ê±ÈÎÎñ£¬api½Ó¿ÚÔİÊ±±£Áô¡£
+	 * è·å–access_tokenå¹¶ç¼“å­˜,å¢åŠ å®šæ—¶ä»»åŠ¡ï¼Œapiæ¥å£æš‚æ—¶ä¿ç•™ã€‚
 	 */
 	@RequestMapping(value = "/getAccessToken", method = RequestMethod.GET)
 	@ResponseBody
@@ -79,9 +94,9 @@ public class WechatController {
 			String result = HttpUtil.getInvoke(url);
 			token = JSON.parseObject(result, Token.class);
 			Cache.putToken("token", token);
-			logger.info("»ñÈ¡access_token ³É¹¦,access_token = {}",result);
+			logger.info("è·å–access_token æˆåŠŸ,access_token = {}",result);
 		} catch (Exception e) {
-			logger.info("»ñÈ¡access_token Ê§°Ü,exception = {}",e);
+			logger.info("è·å–access_token å¤±è´¥,exception = {}",e);
 		}
 		return token;
 	}

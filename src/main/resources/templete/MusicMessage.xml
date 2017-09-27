@@ -1,0 +1,13 @@
+<xml>
+<ToUserName><![CDATA[${toUserName}]]></ToUserName>
+<FromUserName><![CDATA[${formUserName}]]></FromUserName>
+<CreateTime>${createTime}</CreateTime>
+<MsgType><![CDATA[music]]></MsgType>
+<Music>
+<Title><![CDATA[${title}]]></Title>
+<Description><![CDATA[${description}]]></Description>
+<MusicUrl><![CDATA[${musicUrl}]]></MusicUrl>
+<HQMusicUrl><![CDATA[${hQMusicUrl}]]></HQMusicUrl>
+<ThumbMediaId><![CDATA[${thumbMediaId}]]></ThumbMediaId>
+</Music>
+</xml>

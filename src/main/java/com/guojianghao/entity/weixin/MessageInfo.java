@@ -3,9 +3,9 @@ package com.guojianghao.entity.weixin;
 import com.alibaba.fastjson.JSON;
 
 /**
- * @Description:<p>·µ»ØĞÅÏ¢</p>
+ * @Description:<p>æ¥å£è¿”å›æ¶ˆæ¯</p>
  * @author king
- * @date 2017Äê9ÔÂ25ÈÕ ÏÂÎç3:52:46
+ * @date 2017å¹´9æœˆ27æ—¥ ä¸‹åˆ7:42:08
  */
 public class MessageInfo {
 	

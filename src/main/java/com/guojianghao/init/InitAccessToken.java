@@ -11,9 +11,10 @@ import com.guojianghao.util.HttpUtil;
 import com.guojianghao.util.PropertiesUtil;
 
 /**
- * @Description:<p>ÏîÄ¿Æô¶¯µÄÊ±ºò¾Í»ñÈ¡access_token</p>
+ * 
+ * @Description:<p>é¡¹ç›®å¯åŠ¨æ—¶è·å–access_token</p>
  * @author king
- * @date 2017Äê9ÔÂ25ÈÕ ÏÂÎç4:17:57
+ * @date 2017å¹´9æœˆ27æ—¥ ä¸‹åˆ7:43:02
  */
 public class InitAccessToken implements InitializingBean{
 	
@@ -33,9 +34,9 @@ public class InitAccessToken implements InitializingBean{
 			String result = HttpUtil.getInvoke(url);
 			Token token = JSON.parseObject(result, Token.class);
 			Cache.putToken("token", token);
-			logger.info("»ñÈ¡access_token ³É¹¦,access_token = {}",result);
+			logger.info("è·å–access_token æˆåŠŸ,access_token = {}",result);
 		} catch (Exception e) {
-			logger.info("»ñÈ¡access_token Ê§°Ü,exception = {}",e);
+			logger.info("è·å–access_token å¤±è´¥,exception = {}",e);
 		}
 	}
 

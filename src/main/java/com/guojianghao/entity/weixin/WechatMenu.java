@@ -6,9 +6,9 @@ import java.util.List;
 import com.alibaba.fastjson.JSON;
 
 /**
- * @Description:<p>Î¢ĞÅ²Ëµ¥ÊµÌå</p>
+ * @Description:<p>å¾®ä¿¡èœå•å®ä½“</p>
  * @author king
- * @date 2017Äê9ÔÂ25ÈÕ ÏÂÎç3:21:55
+ * @date 2017å¹´9æœˆ25æ—¥ ä¸‹åˆ3:21:55
  */
 public class WechatMenu {
 
@@ -18,7 +18,7 @@ public class WechatMenu {
 	private List<WechatMenu> sub_button = new ArrayList<WechatMenu>();
 	private String url;
 	private String media_id;
-	//Ğ¡³ÌĞòÏà¹Ø£¬ÔİÇÒ¿ÉÄÜÓÃ²»µ½
+	//Ğ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø£ï¿½ï¿½ï¿½ï¿½Ò¿ï¿½ï¿½ï¿½ï¿½Ã²ï¿½ï¿½ï¿½
 	private String appid;
 	private String pagepath;
 	

@@ -4,9 +4,9 @@ import com.alibaba.fastjson.JSON;
 
 /**
  * 
- * @Description:<p>token ÊµÌå</p>
+ * @Description:<p>token</p>
  * @author king
- * @date 2017Äê9ÔÂ25ÈÕ ÏÂÎç2:50:35
+ * @date 2017å¹´9æœˆ27æ—¥ ä¸‹åˆ7:41:48
  */
 public class Token {
 

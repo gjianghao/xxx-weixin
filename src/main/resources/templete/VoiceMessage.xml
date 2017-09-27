@@ -1,0 +1,9 @@
+<xml>
+<ToUserName><![CDATA[${toUserName}]]></ToUserName>
+<FromUserName><![CDATA[${formUserName}]]></FromUserName>
+<CreateTime>${createTime}</CreateTime>
+<MsgType><![CDATA[voice]]></MsgType>
+<Voice>
+<MediaId><![CDATA[${mediaId}]]></MediaId>
+</Voice>
+</xml>
