@@ -14,9 +14,9 @@ import com.guojianghao.util.HttpUtil;
 import com.guojianghao.util.PropertiesUtil;
 
 @Controller
-public class HelloController {
+public class Autho2Controller {
 	
-	private static final Logger logger = LoggerFactory.getLogger(HelloController.class);
+	private static final Logger logger = LoggerFactory.getLogger(Autho2Controller.class);
 	
 	@Autowired
 	private WechatUserInfoService wechatUserInfoService;
