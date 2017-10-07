@@ -14,16 +14,16 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * @Description:<p>http¹¤¾ßÀà</p>
+ * @Description:<p>httpï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</p>
  * @author king
- * @date 2017Äê9ÔÂ25ÈÕ ÏÂÎç4:00:59
+ * @date 2017ï¿½ï¿½9ï¿½ï¿½25ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½4:00:59
  */
 public final class HttpUtil {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HttpUtil.class);
 
 	/**
-	 * http getÇëÇó
+	 * http getï¿½ï¿½ï¿½ï¿½
 	 * @param url
 	 * @return
 	 */
@@ -42,10 +42,10 @@ public final class HttpUtil {
 			HttpResponse response = client.execute(get);
 			if(response.getStatusLine().getStatusCode() == 200){
 				HttpEntity entity = response.getEntity();
-				result = EntityUtils.toString(entity);
+				result = EntityUtils.toString(entity,"UTF-8");
 			}
 		} catch (Exception e) {
-			logger.error("ÇëÇó·þÎñÆ÷·¢ÉúÒì³£,Òì³£ÐÅÏ¢£¬exception={}", e);
+			logger.error("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ì³£,ï¿½ì³£ï¿½ï¿½Ï¢ï¿½ï¿½exception={}", e);
 		} finally {
 			if(httpRequestBase != null){
 				httpRequestBase.releaseConnection();
@@ -55,7 +55,7 @@ public final class HttpUtil {
 	}
 	
 	/**
-	 * http post ²ÎÊýÔÚbodyÌåÖÐ
+	 * http post ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½bodyï¿½ï¿½ï¿½ï¿½
 	 * @param url
 	 * @param params
 	 * @return
@@ -82,7 +82,7 @@ public final class HttpUtil {
 				result = EntityUtils.toString(entity);
 			}
 		} catch (Exception e) {
-			logger.error("ÇëÇó·þÎñÆ÷·¢ÉúÒì³£,Òì³£ÐÅÏ¢£¬exception={}", e);
+			logger.error("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ì³£,ï¿½ì³£ï¿½ï¿½Ï¢ï¿½ï¿½exception={}", e);
 		} finally {
 			if(httpRequestBase != null){
 				httpRequestBase.releaseConnection();

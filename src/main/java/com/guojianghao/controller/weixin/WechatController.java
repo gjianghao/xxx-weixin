@@ -2,7 +2,10 @@ package com.guojianghao.controller.weixin;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,6 +15,7 @@ import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,9 +25,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.alibaba.fastjson.JSON;
 import com.guojianghao.cache.Cache;
 import com.guojianghao.entity.weixin.Token;
+import com.guojianghao.service.weixin.WechatMessageService;
 import com.guojianghao.util.HttpUtil;
 import com.guojianghao.util.PropertiesUtil;
 import com.guojianghao.util.SignUtil;
+import com.guojianghao.util.WechatConstant;
 
 /**
  * @Description:<p>微信接入</p>
@@ -35,6 +41,9 @@ import com.guojianghao.util.SignUtil;
 public class WechatController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(WechatController.class);
+	
+	@Autowired
+	private WechatMessageService wechatMessageService;
 	
 	/**
 	 * 接入
@@ -68,10 +77,22 @@ public class WechatController {
 		Document doc = reader.read(is);
 		Element element = doc.getRootElement();
 		
+		logger.info("监听到的事件,Event = {}",doc.asXML());
 		Iterator<Element> it = element.elementIterator();
+		Map<String,String> map = new HashMap<String,String>();
 		while(it.hasNext()){
 			Element e = it.next();
-			System.out.println(e.getName()+"--------------"+e.getText());
+			map.put(e.getName(), e.getText());
+		}
+		
+		if(map.get("MsgType").equals(WechatConstant.MessageType.MESSAGE_EVENT) && 
+				map.get("Event").equals(WechatConstant.EventType.EVENT_SUB)){
+			
+			String xmlMessage = wechatMessageService.handelContentMessage(map);
+			PrintWriter pw = response.getWriter();
+			pw.println(xmlMessage);
+			pw.flush();
+			pw.close();
 		}
 		
 	}

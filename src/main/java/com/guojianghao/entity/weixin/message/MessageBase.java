@@ -14,7 +14,7 @@ public class MessageBase {
 	@XStreamAlias("FromUserName")
 	private String fromUserName;
 	@XStreamAlias("CreateTime")
-	private int createTime;
+	private long createTime;
 	@XStreamAlias("MsgType")
 	private String msgType;
 	
@@ -30,10 +30,10 @@ public class MessageBase {
 	public void setFromUserName(String fromUserName) {
 		this.fromUserName = fromUserName;
 	}
-	public int getCreateTime() {
+	public long getCreateTime() {
 		return createTime;
 	}
-	public void setCreateTime(int createTime) {
+	public void setCreateTime(long createTime) {
 		this.createTime = createTime;
 	}
 	public String getMsgType() {
